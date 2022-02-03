@@ -3,11 +3,11 @@ import React from "react";
 import AboutHeader from "../../components/aboutComponent/AboutHeader";
 import AboutFooter from "../../components/aboutComponent/AboutFooter";
 
-export default function About() {
+export default function About({ navigation }) {
   return (
     <>
       <AboutHeader />
-      <AboutFooter />
+      <AboutFooter navigation={navigation} />
     </>
   );
 }

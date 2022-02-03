@@ -1,8 +1,5 @@
 import { View, Text } from "react-native";
 import React, { useState } from "react";
-// import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
-// import Ionicons from "react-native-vector-icons/Ionicons";
-// import AntDesign from "react-native-vector-icons/AntDesign";
 
 import { SearchBar } from "react-native-elements";
 
@@ -13,20 +10,41 @@ export default function SearchBarComponent() {
     setSearch(search);
   };
 
+  // found this to be the best way to get the search bar to work with the backend
+  // https://stackoverflow.com/questions/65067626/search-bar-get-request-using-express
+
+  const getDataFromAPI = () => {
+    console.log("Options Fetched from API");
+
+    fetch("http://dummy.restapiexample.com/api/v1/employees")
+      .then((response) => {
+        return response.json();
+      })
+      .then((res) => {
+        console.log(res.data);
+        for (var i = 0; i < res.data.length; i++) {
+          myOptions.push(res.data[i].employee_name);
+        }
+        setMyOptions(myOptions);
+      });
+  };
+
   return (
-    <View style={{ marginTop: 15, borderRadius:5 }}>
+    <View style={{ marginTop: 15, borderRadius: 5 }}>
       <SearchBar
         placeholder="Search Here..."
-        onChangeText={this.updateSearch}
+        onChangeText={updateSearch}
         value={search}
-        // styles={{borderRadius:5}}
-
-
-        inputStyle={{backgroundColor: 'white'}}
-        containerStyle={{backgroundColor: 'white', borderWidth: 1, borderRadius: 5}}
-        inputContainerStyle={{backgroundColor: 'white'}}
-        placeholderTextColor={'#g5g5g5'}
+        inputStyle={{ backgroundColor: "white" }}
+        containerStyle={{
+          backgroundColor: "white",
+          borderWidth: 1,
+          borderRadius: 5,
+        }}
+        inputContainerStyle={{ backgroundColor: "white" }}
+        placeholderTextColor={"grey"}
       />
+      {console.log(search)}
     </View>
   );
 }

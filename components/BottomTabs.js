@@ -6,6 +6,9 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Home from "../screens/home/Home";
 import About from "../screens/about/About";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import AboutNavigation from "./aboutComponent/navigations/AboutNavigation";
+import Notification from "../screens/notification/Notification";
+import Bookings from "../screens/bookings/Bookings";
 
 const Tab = createBottomTabNavigator();
 
@@ -34,7 +37,7 @@ function BottomTabs() {
           ),
         }}
         name="Bookings"
-        component={About}
+        component={Bookings}
       />
       <Tab.Screen
         options={{
@@ -44,7 +47,7 @@ function BottomTabs() {
           ),
         }}
         name="Notification"
-        component={About}
+        component={Notification}
       />
 
       <Tab.Screen
@@ -55,7 +58,7 @@ function BottomTabs() {
           ),
         }}
         name="About"
-        component={About}
+        component={AboutNavigation}
       />
     </Tab.Navigator>
   );

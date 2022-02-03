@@ -1,10 +1,10 @@
 import { View, Text } from 'react-native';
 import React from 'react';
 
-export default function navigation() {
+export default function ContactUs() {
   return (
     <View>
-      <Text></Text>
+      <Text>ContactUs</Text>
     </View>
   );
 }
